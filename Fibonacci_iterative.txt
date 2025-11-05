@@ -1,0 +1,63 @@
+public class Fibonacci_iterative {
+public static int[] 
+fibonacciIterative(int n) {
+int stepCount = 0;
+if (n == 0) {
+stepCount++;
+return new int[]
+{0, stepCount};
+} 
+else if (n == 1) 
+{
+stepCount++;
+return new int[]
+{1, stepCount};
+}
+int a = 0, b = 1;
+stepCount += 2;
+for (int i = 2; i <= n; i++) 
+{
+stepCount++;
+int temp = a + b;
+a = b;
+b = temp;
+}
+return new int[]{b, stepCount};
+}
+public static void main (String[] args) {
+int n = 10;
+int[] result = fibonacciIterative(n);
+System.out.println("Fibonacci(" + n + ") = " + result[0]);
+System.out.println("Step Count = " + result[1]);
+}
+}
+
+
+
+
+
+
+
+
+public class Fibonacci_recursive 
+{
+static int stepCount = 0;
+public static int fibonacci(int n) 
+{
+stepCount++;
+return switch (n) 
+{
+case 0 -> 0;
+case 1 -> 1;
+default -> fibonacci(n - 1) + fibonacci(n - 2);
+};
+}
+public static void main(String[] args) 
+{
+int n = 9;
+stepCount = 0;
+int result = fibonacci(n);
+System.out.println("Fibonacci(" + n + ") = " + result);
+System.out.println("Step Count = " + stepCount);
+}
+}
